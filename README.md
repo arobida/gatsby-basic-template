@@ -18,6 +18,10 @@ Animations:
 
 - [react-spring](https://www.react-spring.io/)
 
+Icons:
+
+- [react-icons](https://react-icons.netlify.com/#/)
+
 Plugins:
 
 - [emotion](https://emotion.sh/)
