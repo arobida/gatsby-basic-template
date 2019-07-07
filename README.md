@@ -14,20 +14,23 @@ _Have another more specific idea? You may want to check out our vibrant collecti
 
 ## 🧐 My Additions
 
-Animations:
+_Animations:_
 
 - [react-spring](https://www.react-spring.io/)
 
-Icons:
+_Icons:_
 
 - [react-icons](https://react-icons.netlify.com/#/)
 
-Plugins:
+_Plugins:_
 
 - [emotion](https://emotion.sh/)
 - [gatsby-plugin-sitemap](https://www.gatsbyjs.org/packages/gatsby-plugin-sitemap/?=)
 - [gatsby-plugin-page-creator](https://www.gatsbyjs.org/packages/gatsby-plugin-page-creator/?=)
-- []()
+
+_Other:_
+
+- [react-headroom](https://kyleamathews.github.io/react-headroom/)
 
 ## 🚀 Quick start
 
