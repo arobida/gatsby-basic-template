@@ -11,8 +11,8 @@ const nav = css`
   -moz-box-shadow: 3px 3px 5px 6px #ccc;
   box-shadow: 3px 3px 5px 6px #ccc;
   @media (max-width: 450px) {
-    height: 6rem;
-    width: 6rem;
+    height: 4rem;
+    width: 4rem;
     position: fixed;
     right: 20px;
     bottom: 20px;
@@ -34,7 +34,7 @@ const MobileMenu = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 15px;
+  margin-top: 5px;
 `
 
 const Header = ({ siteTitle }) => (
@@ -51,7 +51,7 @@ const Header = ({ siteTitle }) => (
       </Link>
     </Menu>
     <MobileMenu>
-      <MdFingerprint size="4rem" color="#FF9100" />
+      <MdFingerprint size="3.5rem" color="#FF9100" />
     </MobileMenu>
   </header>
 )
