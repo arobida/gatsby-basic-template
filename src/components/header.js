@@ -44,6 +44,11 @@ const Header = ({ siteTitle }) => {
   console.log(toggle)
   console.log(MobileMenu)
   const slider = useSpring({
+    position: !toggle ? "fixed" : "overlay",
+    height: !toggle ? "4rem" : "100vh",
+    width: !toggle ? "4rem" : "80vw",
+  })
+  const iconchange = useSpring({
     opacity: !toggle ? 1 : 0,
   })
   return (
@@ -62,7 +67,9 @@ const Header = ({ siteTitle }) => {
         </Headroom>
       </Menu>
       <MobileMenu onClick={() => setToggle(!toggle)} style={slider}>
-        <MdFingerprint size="3.5rem" color="#FF9100" />
+        <animated.div style={iconchange}>
+          <MdFingerprint size="3.5rem" color="#FF9100" />
+        </animated.div>
       </MobileMenu>
     </header>
   )
