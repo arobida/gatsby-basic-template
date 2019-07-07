@@ -5,6 +5,7 @@ import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 import { MdFingerprint, MdClear } from "react-icons/md"
 import Headroom from "react-headroom"
+import { useSpring, animated } from "react-spring"
 
 const nav = css`
   margin-bottom: 1.45rem;
@@ -28,7 +29,7 @@ const Menu = styled.div`
     display: none;
   }
 `
-const MobileMenu = styled.div`
+const MobileMenu = styled(animated.div)`
   @media (min-width: 450px) {
     display: none;
   }
@@ -40,6 +41,11 @@ const MobileMenu = styled.div`
 
 const Header = ({ siteTitle }) => {
   const [toggle, setToggle] = useState(false)
+  console.log(toggle)
+  console.log(MobileMenu)
+  const slider = useSpring({
+    opacity: !toggle ? 1 : 0,
+  })
   return (
     <header css={nav}>
       <Menu>
@@ -55,7 +61,7 @@ const Header = ({ siteTitle }) => {
           </Link>
         </Headroom>
       </Menu>
-      <MobileMenu>
+      <MobileMenu onClick={() => setToggle(!toggle)} style={slider}>
         <MdFingerprint size="3.5rem" color="#FF9100" />
       </MobileMenu>
     </header>
