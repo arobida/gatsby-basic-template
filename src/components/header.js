@@ -1,9 +1,9 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+import { useState } from "react"
 import { css } from "@emotion/core"
 import styled from "@emotion/styled"
-import { MdFingerprint } from "react-icons/md"
+import { MdFingerprint, MdClear } from "react-icons/md"
 
 const nav = css`
   margin-bottom: 1.45rem;
@@ -37,24 +37,28 @@ const MobileMenu = styled.div`
   margin-top: 5px;
 `
 
-const Header = ({ siteTitle }) => (
-  <header css={nav}>
-    <Menu>
-      <Link
-        to="/"
-        style={{
-          color: `rebeccapurple`,
-          textDecoration: `none`,
-        }}
-      >
-        {siteTitle}
-      </Link>
-    </Menu>
-    <MobileMenu>
-      <MdFingerprint size="3.5rem" color="#FF9100" />
-    </MobileMenu>
-  </header>
-)
+const Header = ({ siteTitle }) => {
+  const [toggle, setToggle] = useState(false)
+  console.log(toggle)
+  return (
+    <header css={nav}>
+      <Menu>
+        <Link
+          to="/"
+          style={{
+            color: `rebeccapurple`,
+            textDecoration: `none`,
+          }}
+        >
+          {siteTitle}
+        </Link>
+      </Menu>
+      <MobileMenu onClick={() => setToggle(!toggle)}>
+        <MdFingerprint size="3.5rem" color="#FF9100" />
+      </MobileMenu>
+    </header>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
