@@ -1,5 +1,4 @@
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React, { useState } from "react"
 import { css } from "@emotion/core"
 import { MdFingerprint, MdClear } from "react-icons/md"
@@ -8,7 +7,6 @@ import { useSpring, useTransition, animated } from "react-spring"
 
 const nav = css`
   margin-bottom: 1.45rem;
-  width: 100%;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
   -moz-box-shadow: 3px 3px 5px 6px #ccc;
   box-shadow: 3px 3px 5px 6px #ccc;
@@ -16,6 +14,52 @@ const nav = css`
     display: none;
   }
 `
+const navItems = css`
+  display: flex;
+  flex-direction: row;
+`
+const link = css`
+  color: rebeccapurple;
+  text-decoration: none;
+  padding-top: 2rem;
+  margin-left: 2rem;
+`
+
+const Header = () => {
+  return (
+    <>
+      {/* This is for the Desktop or full width navigation */}
+      <animated.header css={nav}>
+        <Headroom>
+          <div css={navItems}>
+            <h2>
+              <Link to="/" css={link}>
+                Sexy Websites
+              </Link>
+            </h2>
+            <h3>
+              <Link to="/" css={link}>
+                Home
+              </Link>
+            </h3>
+            <h3>
+              <Link to="/about" css={link}>
+                About
+              </Link>
+            </h3>
+            <h3>
+              <Link to="/contact" css={link}>
+                Contact
+              </Link>
+            </h3>
+          </div>
+        </Headroom>
+      </animated.header>
+      <MobileMenu />
+    </>
+  )
+}
+
 const mobilenav = css`
   @media (max-width: 450px) {
     height: 4rem;
@@ -45,7 +89,7 @@ const mobileItems = css`
   align-items: center;
   justify-content: center;
 `
-const link = css`
+const mobileLink = css`
   color: #ff9100;
   margin-bottom: 2rem;
 `
@@ -57,9 +101,9 @@ const spinner = css`
   right: 1.5rem;
 `
 
-const Header = ({ siteTitle }) => {
+const MobileMenu = () => {
+  // These are all animations for the mobile menu
   const [toggle, setToggle] = useState(false)
-  console.log(toggle)
   const slider = useSpring({
     background: !toggle ? "white" : "rebeccapurple",
     width: !toggle ? "4rem" : "50rem",
@@ -69,7 +113,7 @@ const Header = ({ siteTitle }) => {
     zIndex: "50",
   })
 
-  const iconchange = useSpring({
+  const spin = useSpring({
     transform: !toggle ? "rotate(0deg)" : "rotate(360deg)",
   })
   const fade = useSpring({
@@ -88,64 +132,42 @@ const Header = ({ siteTitle }) => {
     leave: { opacity: 0 },
   })
   return (
-    <>
-      <animated.header css={nav}>
-        <Headroom>
-          <Link
-            to="/"
-            style={{
-              color: `rebeccapurple`,
-              textDecoration: `none`,
-            }}
-          >
-            {siteTitle}
-          </Link>
-        </Headroom>
-      </animated.header>
-      <animated.header css={mobilenav} style={slider}>
-        <animated.div css={mobileItems} style={fade}>
-          <Link to="/" css={link}>
-            Home
-          </Link>
-          <Link to="/about" css={link}>
-            About
-          </Link>
-          <Link to="/contact" css={link}>
-            Contact
-          </Link>
-        </animated.div>
-        <animated.div css={spinner} style={iconchange}>
-          {transitions.map(({ item, key, props }) =>
-            item ? (
-              <animated.div
-                key={key}
-                style={props}
-                onClick={() => setToggle(!toggle)}
-              >
-                <MdClear size="3rem" color="#FF9100" />
-              </animated.div>
-            ) : (
-              <animated.div
-                key={key}
-                style={props}
-                onClick={() => setToggle(!toggle)}
-              >
-                <MdFingerprint size="3rem" color="#FF9100" />
-              </animated.div>
-            )
-          )}
-        </animated.div>
-      </animated.header>
-    </>
+    // This is for the Mobile of small width navigation
+    <animated.header css={mobilenav} style={slider}>
+      <animated.div css={mobileItems} style={fade}>
+        <Link to="/" css={mobileLink}>
+          Home
+        </Link>
+        <Link to="/about" css={mobileLink}>
+          About
+        </Link>
+        <Link to="/contact" css={mobileLink}>
+          Contact
+        </Link>
+      </animated.div>
+      <animated.div css={spinner} style={spin}>
+        {transitions.map(({ item, key, props }) =>
+          item ? (
+            <animated.div
+              key={key}
+              style={props}
+              onClick={() => setToggle(!toggle)}
+            >
+              <MdClear size="3rem" color="#FF9100" />
+            </animated.div>
+          ) : (
+            <animated.div
+              key={key}
+              style={props}
+              onClick={() => setToggle(!toggle)}
+            >
+              <MdFingerprint size="3rem" color="#FF9100" />
+            </animated.div>
+          )
+        )}
+      </animated.div>
+    </animated.header>
   )
-}
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
 }
 
 export default Header
