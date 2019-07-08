@@ -9,6 +9,7 @@ import { useSpring, useTransition, animated } from "react-spring"
 
 const nav = css`
   margin-bottom: 1.45rem;
+  width: 100%;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
   -moz-box-shadow: 3px 3px 5px 6px #ccc;
   box-shadow: 3px 3px 5px 6px #ccc;
@@ -82,7 +83,13 @@ const Header = ({ siteTitle }) => {
     opacity: !toggle ? 0 : 1,
   })
   const transitions = useTransition(toggle, null, {
-    from: { opacity: 0 },
+    from: {
+      position: "fixed",
+      zIndex: "55",
+      bottom: ".3rem",
+      right: ".3rem",
+      opacity: 0,
+    },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
   })
@@ -117,11 +124,11 @@ const Header = ({ siteTitle }) => {
           {transitions.map(({ item, key, props }) =>
             item ? (
               <animated.div style={props}>
-                <MdClear size="3.5rem" color="#FF9100" />
+                <MdClear size="3rem" color="#FF9100" />
               </animated.div>
             ) : (
               <animated.div style={props}>
-                <MdFingerprint size="3.5rem" color="#FF9100" />
+                <MdFingerprint size="3rem" color="#FF9100" />
               </animated.div>
             )
           )}
