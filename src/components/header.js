@@ -5,7 +5,7 @@ import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 import { MdFingerprint, MdClear } from "react-icons/md"
 import Headroom from "react-headroom"
-import { useSpring, animated } from "react-spring"
+import { useSpring, useTransition, animated } from "react-spring"
 
 const nav = css`
   margin-bottom: 1.45rem;
@@ -54,6 +54,8 @@ const link = css`
   color: #ff9100;
   margin-bottom: 2rem;
 `
+const Fingerico = animated(MdFingerprint)
+const Clearico = animated(MdClear)
 
 const Header = ({ siteTitle }) => {
   const [toggle, setToggle] = useState(false)
@@ -73,11 +75,16 @@ const Header = ({ siteTitle }) => {
     right: 25px;
   `
   const iconchange = useSpring({
-    opacity: !toggle ? 1 : 0,
+    transform: !toggle ? "rotate(0deg)" : "rotate(360deg)",
   })
   const fade = useSpring({
     display: !toggle ? "none" : "flex",
     opacity: !toggle ? 0 : 1,
+  })
+  const transitions = useTransition(toggle, null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
   })
   return (
     <animated.header css={nav} style={slider}>
@@ -106,9 +113,20 @@ const Header = ({ siteTitle }) => {
             Contact
           </Link>
         </animated.div>
-        <div css={menuicon}>
-          <MdFingerprint size="3.5rem" color="#FF9100" />
-        </div>
+        <animated.div css={menuicon} style={iconchange}>
+          {transitions.map(({ item, key, props }) =>
+            item ? (
+              <animated.div style={props}>
+                <MdClear size="3.5rem" color="#FF9100" />
+              </animated.div>
+            ) : (
+              <animated.div style={props}>
+                <MdFingerprint size="3.5rem" color="#FF9100" />
+              </animated.div>
+            )
+          )}
+          {/*  */}
+        </animated.div>
       </MobileMenu>
     </animated.header>
   )
