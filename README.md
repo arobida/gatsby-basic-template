@@ -33,6 +33,11 @@ _Other:_
 
 - [react-headroom](https://kyleamathews.github.io/react-headroom/)
 - [typography-theme-fairy-gates](https://github.com/KyleAMathews/typography.js/tree/master/packages/typography-theme-fairy-gates)
+  _Can be uninstalled by using the command below:_
+
+```shell
+npm uninstall --save typography typography-theme-fairy-gates
+```
 
 ## 🚀 Quick start
 
