@@ -17,41 +17,35 @@ const nav = css`
 const navItems = css`
   display: flex;
   flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
 `
 const link = css`
   color: rebeccapurple;
   text-decoration: none;
-  padding-top: 2rem;
-  margin-left: 2rem;
+  margin: 1rem;
+  padding: 0;
 `
-
 const Header = () => {
+  console.log(<Headroom />)
   return (
     <>
       {/* This is for the Desktop or full width navigation */}
       <animated.header css={nav}>
         <Headroom>
           <div css={navItems}>
-            <h2>
-              <Link to="/" css={link}>
-                Sexy Websites
-              </Link>
-            </h2>
-            <h3>
-              <Link to="/" css={link}>
-                Home
-              </Link>
-            </h3>
-            <h3>
-              <Link to="/about" css={link}>
-                About
-              </Link>
-            </h3>
-            <h3>
-              <Link to="/contact" css={link}>
-                Contact
-              </Link>
-            </h3>
+            <Link to="/" css={link} style={{ marginRight: "5rem" }}>
+              <h2>Sexy Websites</h2>
+            </Link>
+            <Link to="/" css={link}>
+              <h3>Home</h3>
+            </Link>
+            <Link to="/about" css={link}>
+              <h3>About</h3>
+            </Link>
+            <Link to="/contact" css={link}>
+              <h3>Contact</h3>
+            </Link>
           </div>
         </Headroom>
       </animated.header>
