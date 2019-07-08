@@ -74,13 +74,12 @@ const mobileItems = css`
   list-style: none;
   z-index: 55;
   font-size: 2rem;
-  height: 10rem;
-  margin-top: 10rem;
-  margin-right: 8rem;
+  height: 65%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-right: 8rem;
 `
 const mobileLink = css`
   color: #ff9100;
