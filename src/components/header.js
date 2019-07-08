@@ -38,6 +38,22 @@ const MobileMenu = styled(animated.div)`
   align-items: center;
   margin-top: 5px;
 `
+const mobileItems = css`
+  list-style: none;
+  z-index: 55;
+  font-size: 2rem;
+  height: 10rem;
+  margin-top: 10rem;
+  margin-right: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+const link = css`
+  color: #ff9100;
+  margin-bottom: 2rem;
+`
 
 const Header = ({ siteTitle }) => {
   const [toggle, setToggle] = useState(false)
@@ -59,9 +75,9 @@ const Header = ({ siteTitle }) => {
   const iconchange = useSpring({
     opacity: !toggle ? 1 : 0,
   })
-  const stroker = useSpring({
-    x: 100,
-    from: { x: 0 },
+  const fade = useSpring({
+    display: !toggle ? "none" : "flex",
+    opacity: !toggle ? 0 : 1,
   })
   return (
     <animated.header css={nav} style={slider}>
@@ -79,9 +95,20 @@ const Header = ({ siteTitle }) => {
         </Headroom>
       </Menu>
       <MobileMenu onClick={() => setToggle(!toggle)}>
-        <animated.div css={menuicon} style={stroker}>
-          <MdFingerprint size="3.5rem" color="#FF9100" />
+        <animated.div css={mobileItems} style={fade}>
+          <Link to="/" css={link}>
+            Home
+          </Link>
+          <Link to="/about" css={link}>
+            About
+          </Link>
+          <Link to="/contact" css={link}>
+            Contact
+          </Link>
         </animated.div>
+        <div css={menuicon}>
+          <MdFingerprint size="3.5rem" color="#FF9100" />
+        </div>
       </MobileMenu>
     </animated.header>
   )
