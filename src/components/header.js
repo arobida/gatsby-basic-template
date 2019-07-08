@@ -27,7 +27,6 @@ const link = css`
   padding: 0;
 `
 const Header = () => {
-  console.log(<Headroom />)
   return (
     <>
       {/* This is for the Desktop or full width navigation */}

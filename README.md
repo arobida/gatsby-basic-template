@@ -27,10 +27,12 @@ _Plugins:_
 - [emotion](https://emotion.sh/)
 - [gatsby-plugin-sitemap](https://www.gatsbyjs.org/packages/gatsby-plugin-sitemap/?=)
 - [gatsby-plugin-page-creator](https://www.gatsbyjs.org/packages/gatsby-plugin-page-creator/?=)
+- [gatsby-plugin-typography](https://www.gatsbyjs.org/packages/gatsby-plugin-typography/) (_View themes [here](https://kyleamathews.github.io/typography.js/)_)
 
 _Other:_
 
 - [react-headroom](https://kyleamathews.github.io/react-headroom/)
+- [typography-theme-fairy-gates](https://github.com/KyleAMathews/typography.js/tree/master/packages/typography-theme-fairy-gates)
 
 ## 🚀 Quick start
 
