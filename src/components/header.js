@@ -16,9 +16,9 @@ const nav = css`
     height: 4rem;
     width: 4rem;
     position: fixed;
-    right: 20px;
-    bottom: 20px;
-    border-radius: 100px;
+    right: 1.3rem;
+    bottom: 1.3rem;
+    border-radius: 100%;
     -webkit-box-shadow: 3px 3px 5px 6px #ccc;
     -moz-box-shadow: 3px 3px 5px 6px #ccc;
     box-shadow: 3px 3px 5px 6px #ccc;
@@ -44,15 +44,27 @@ const Header = ({ siteTitle }) => {
   console.log(toggle)
   console.log(MobileMenu)
   const slider = useSpring({
-    position: !toggle ? "fixed" : "overlay",
-    height: !toggle ? "4rem" : "100vh",
-    width: !toggle ? "4rem" : "80vw",
+    background: !toggle ? "white" : "rebeccapurple",
+    width: !toggle ? "4rem" : "50rem",
+    height: !toggle ? "4rem" : "50rem",
+    bottom: !toggle ? "1.3rem" : "-18rem",
+    right: !toggle ? "1.3rem" : "-18rem",
+    zIndex: "50",
   })
+  const menuicon = css`
+    position: fixed;
+    bottom: 40px;
+    right: 25px;
+  `
   const iconchange = useSpring({
     opacity: !toggle ? 1 : 0,
   })
+  const stroker = useSpring({
+    x: 100,
+    from: { x: 0 },
+  })
   return (
-    <header css={nav}>
+    <animated.header css={nav} style={slider}>
       <Menu>
         <Headroom>
           <Link
@@ -66,12 +78,12 @@ const Header = ({ siteTitle }) => {
           </Link>
         </Headroom>
       </Menu>
-      <MobileMenu onClick={() => setToggle(!toggle)} style={slider}>
-        <animated.div style={iconchange}>
+      <MobileMenu onClick={() => setToggle(!toggle)}>
+        <animated.div css={menuicon} style={stroker}>
           <MdFingerprint size="3.5rem" color="#FF9100" />
         </animated.div>
       </MobileMenu>
-    </header>
+    </animated.header>
   )
 }
 
