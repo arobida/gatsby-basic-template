@@ -34,6 +34,17 @@ const Header = () => {
       <animated.header css={nav}>
         <Headroom>
           <div css={navItems}>
+            <div style={{ marginRight: "3rem" }}>
+              <a href="#">
+                <FaFacebook />
+              </a>
+              <a href="#">
+                <FaInstagram />
+              </a>
+              <a href="#">
+                <FaLinkedin />
+              </a>
+            </div>
             <Link to="/" css={link} style={{ marginRight: "5rem" }}>
               <h2>Sexy Websites</h2>
             </Link>
