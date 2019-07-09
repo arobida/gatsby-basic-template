@@ -24,28 +24,18 @@ const navItems = css`
 const link = css`
   color: rebeccapurple;
   text-decoration: none;
-  margin: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   padding: 0;
 `
 const Header = () => {
   return (
     <>
       {/* This is for the Desktop or full width navigation */}
-      <animated.header css={nav}>
-        <Headroom>
+      <animated.header>
+        <Headroom css={nav}>
           <div css={navItems}>
-            <div style={{ marginRight: "3rem" }}>
-              <a href="#">
-                <FaFacebook />
-              </a>
-              <a href="#">
-                <FaInstagram />
-              </a>
-              <a href="#">
-                <FaLinkedin />
-              </a>
-            </div>
-            <Link to="/" css={link} style={{ marginRight: "5rem" }}>
+            <Link to="/" css={link} style={{ margin: "auto" }}>
               <h2>Sexy Websites</h2>
             </Link>
             <Link to="/" css={link}>
@@ -57,6 +47,17 @@ const Header = () => {
             <Link to="/contact" css={link}>
               <h3>Contact</h3>
             </Link>
+          </div>
+          <div style={{ margin: "0 auto", textAlign: "center" }}>
+            <a href="#">
+              <FaFacebook size="2rem" />
+            </a>
+            <a href="#">
+              <FaInstagram size="2rem" />
+            </a>
+            <a href="#">
+              <FaLinkedin size="2rem" />
+            </a>
           </div>
         </Headroom>
       </animated.header>
