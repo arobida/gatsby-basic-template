@@ -2,6 +2,7 @@ import { Link } from "gatsby"
 import React, { useState } from "react"
 import { css } from "@emotion/core"
 import { MdFingerprint, MdClear } from "react-icons/md"
+import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa"
 import Headroom from "react-headroom"
 import { useSpring, useTransition, animated } from "react-spring"
 
@@ -136,6 +137,17 @@ const MobileMenu = () => {
         <Link to="/contact" css={mobileLink}>
           Contact
         </Link>
+        <div>
+          <a href="#">
+            <FaFacebook />
+          </a>
+          <a href="#">
+            <FaInstagram />
+          </a>
+          <a href="#">
+            <FaLinkedin />
+          </a>
+        </div>
       </animated.div>
       <animated.div css={spinner} style={spin}>
         {transitions.map(({ item, key, props }) =>
