@@ -6,6 +6,8 @@ import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa"
 import Headroom from "react-headroom"
 import { useSpring, useTransition, animated } from "react-spring"
 
+import logo from "../images/gatsby-icon.png"
+
 const nav = css`
   margin-bottom: 1.45rem;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
@@ -18,15 +20,13 @@ const nav = css`
 const navItems = css`
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  padding-top:.5em;
 `
 const link = css`
   color: rebeccapurple;
   text-decoration: none;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  padding: 0;
 `
 const Header = () => {
   return (
@@ -35,29 +35,45 @@ const Header = () => {
       <animated.header>
         <Headroom css={nav}>
           <div css={navItems}>
-            <Link to="/" css={link} style={{ margin: "auto" }}>
-              <h2>Sexy Websites</h2>
-            </Link>
             <Link to="/" css={link}>
-              <h3>Home</h3>
+              <img src={logo} alt="gatsbyjs logo" style={{width:"2em",marginLeft:"1em"}} />
             </Link>
-            <Link to="/about" css={link}>
-              <h3>About</h3>
-            </Link>
-            <Link to="/contact" css={link}>
-              <h3>Contact</h3>
-            </Link>
-          </div>
-          <div style={{ margin: "0 auto", textAlign: "center" }}>
-            <a href="#">
-              <FaFacebook size="2rem" />
-            </a>
-            <a href="#">
-              <FaInstagram size="2rem" />
-            </a>
-            <a href="#">
-              <FaLinkedin size="2rem" />
-            </a>
+            <nav>
+            <ul style={{ listStyle: "none" }}>
+              <li style={{ display: "inline-block",padding:".4em" }}>
+                <Link to="/" css={link}>
+                  <h3>Home</h3>
+                </Link>
+              </li>
+              <li style={{ display: "inline-block",padding:".4em" }}>
+                <Link to="/about" css={link}>
+                  <h3>About</h3>
+                </Link>
+              </li>
+              <li style={{ display: "inline-block",padding:".4em" }}>
+                <Link to="/contact" css={link}>
+                  <h3>Contact</h3>
+                </Link>
+              </li>
+            </ul>
+            </nav>
+            <ul style={{ listStyle: "none", marginRight:"1em" }}>
+              <li style={{ display: "inline-block" }}>
+                <a href="#">
+                  <FaFacebook size="2rem" />
+                </a>
+              </li>
+              <li style={{ display: "inline-block" }}>
+                <a href="#">
+                  <FaInstagram size="2rem" />
+                </a>
+              </li>
+              <li style={{ display: "inline-block" }}>
+                <a href="#">
+                  <FaLinkedin size="2rem" />
+                </a>
+              </li>
+            </ul>
           </div>
         </Headroom>
       </animated.header>
@@ -140,7 +156,7 @@ const MobileMenu = () => {
     // This is for the Mobile of small width navigation
     <animated.header css={mobilenav} style={slider}>
       <animated.div css={mobileItems} style={fade}>
-        <Link to="/" css={mobileLink}>
+        <Link cover to="/" css={mobileLink}>
           Home
         </Link>
         <Link to="/about" css={mobileLink}>
