@@ -156,7 +156,7 @@ const MobileMenu = () => {
     // This is for the Mobile of small width navigation
     <animated.header css={mobilenav} style={slider}>
       <animated.div css={mobileItems} style={fade}>
-        <Link cover to="/" css={mobileLink}>
+        <Link to="/" css={mobileLink}>
           Home
         </Link>
         <Link to="/about" css={mobileLink}>
